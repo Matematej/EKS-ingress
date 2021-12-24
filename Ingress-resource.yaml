@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "MBTI-Ingress-Resource"
+  namespace: "MBTI-EK8s"
+  annotations:
+    kubernetes.io/ingress.class: mbti
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+  labels:
+    app: mbti-ingress-resource
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /mbti-frontend/
+            backend:
+              serviceName: "Frontend-MBTI-service"
+              servicePort: 80    
+          - path: /*
+            backend:
+              serviceName: "Backend-MBTI-service"
+              servicePort: 80
+
+                

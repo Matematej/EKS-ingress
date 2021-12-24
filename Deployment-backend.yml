@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "Backend-MBTI-deployment"
+  namespace: "MBTI-EK8s"
+spec:
+  selector:
+    matchLabels:
+      app: "MBTI-Backend"
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "MBTI-Backend"
+    spec:
+      containers:
+      - image: nginx
+        imagePullPolicy: Always
+        name: "MBTI-backend"
+        ports:
+        - containerPort: 80
