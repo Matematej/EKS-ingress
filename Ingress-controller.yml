@@ -17,7 +17,6 @@ spec:
       containers:
         - name: alb-ingress-controller
           args:
-            - --ingress-class=mbti
-            
+            - --ingress-class=mbti 
           image: docker.io/amazon/aws-alb-ingress-controller:v1.1.4
       serviceAccountName: alb-ingress-controller
